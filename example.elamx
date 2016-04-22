@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<elamx version="1">
+    <laminates>
+        <laminate name="New Laminate" symmetric="true" uuid="f05abfe7-7995-4be0-b213-d0478afff4c3" with_middle_layer="true">
+            <layer name="New Layer" uuid="1e548442-350d-4017-b706-295c3278154f">
+                <thickness>0.125</thickness>
+                <angle>0.0</angle>
+                <material>4a47d96c-682f-43d8-ba2a-c0f1b4f8a603</material>
+                <criterion>de.elamx.laminate.failure.Puck</criterion>
+            </layer>
+            <layer name="New Layer" uuid="5d61dd84-e103-44b2-af6e-67d232a07ba9">
+                <thickness>0.125</thickness>
+                <angle>0.0</angle>
+                <material>4a47d96c-682f-43d8-ba2a-c0f1b4f8a603</material>
+                <criterion>de.elamx.laminate.failure.Puck</criterion>
+            </layer>
+            <layer name="New Layer" uuid="71667468-7a72-4cd9-bf07-fa5d3d68a64e">
+                <thickness>5.0</thickness>
+                <angle>0.0</angle>
+                <material>4a47d96c-682f-43d8-ba2a-c0f1b4f8a603</material>
+                <criterion>de.elamx.laminate.failure.Puck</criterion>
+            </layer>
+        </laminate>
+        <laminate name="Laminate2" symmetric="false" uuid="eed99eb5-fb7a-4a9d-b29e-2002a38f16ad" with_middle_layer="false">
+            <layer name="lam2 layer" uuid="926e2765-9697-44c7-b472-6c0bef402738">
+                <thickness>0.125</thickness>
+                <angle>0.0</angle>
+                <material>4a47d96c-682f-43d8-ba2a-c0f1b4f8a603</material>
+                <criterion>de.elamx.laminate.failure.Puck</criterion>
+            </layer>
+            <layer name="lam2 layer" uuid="be050f66-0662-493e-80c5-aa2cc424d8ae">
+                <thickness>0.125</thickness>
+                <angle>0.0</angle>
+                <material>4a47d96c-682f-43d8-ba2a-c0f1b4f8a603</material>
+                <criterion>de.elamx.laminate.failure.Puck</criterion>
+            </layer>
+            <layer name="lam2 layer" uuid="9935cd46-f074-48a7-bb25-91793028330b">
+                <thickness>0.125</thickness>
+                <angle>0.0</angle>
+                <material>4a47d96c-682f-43d8-ba2a-c0f1b4f8a603</material>
+                <criterion>de.elamx.laminate.failure.Puck</criterion>
+            </layer>
+        </laminate>
+    </laminates>
+    <materials>
+        <material class="de.elamx.laminate.DefaultMaterial" name="C-'AS4' | EP-'3501-6'" uuid="4a47d96c-682f-43d8-ba2a-c0f1b4f8a603">
+            <Epar>142000.0</Epar>
+            <Enor>10300.0</Enor>
+            <nue12>0.27</nue12>
+            <G>7200.0</G>
+            <rho>1.5800000000000001E-9</rho>
+            <alphaTPar>-9.0E-7</alphaTPar>
+            <alphaTNor>2.7E-5</alphaTNor>
+            <betaPar>0.01</betaPar>
+            <betaNor>0.2</betaNor>
+            <RParTen>2280.0</RParTen>
+            <RParCom>1440.0</RParCom>
+            <RNorTen>57.0</RNorTen>
+            <RNorCom>1440.0</RNorCom>
+            <RShear>71.0</RShear>
+            <de.elamx.laminate.failure.Puck.pspz>0.35</de.elamx.laminate.failure.Puck.pspz>
+            <de.elamx.laminate.addFailureCriteria.Rotem.em>4500.0</de.elamx.laminate.addFailureCriteria.Rotem.em>
+            <de.elamx.laminate.addFailureCriteria.Rotem.rmt>50.0</de.elamx.laminate.addFailureCriteria.Rotem.rmt>
+            <de.elamx.laminate.addFailureCriteria.FMC.m>3.1</de.elamx.laminate.addFailureCriteria.FMC.m>
+            <de.elamx.laminate.addFailureCriteria.Rotem.rmc>50.0</de.elamx.laminate.addFailureCriteria.Rotem.rmc>
+            <de.elamx.laminate.failure.Puck.a0>0.5</de.elamx.laminate.failure.Puck.a0>
+            <de.elamx.laminate.failure.Puck.lambda_min>0.5</de.elamx.laminate.failure.Puck.lambda_min>
+            <de.elamx.laminate.addFailureCriteria.TsaiWu.f12star>-0.5</de.elamx.laminate.addFailureCriteria.TsaiWu.f12star>
+            <de.elamx.laminate.failure.Puck.pspd>0.3</de.elamx.laminate.failure.Puck.pspd>
+            <de.elamx.laminate.addFailureCriteria.FMC.muesp>0.15</de.elamx.laminate.addFailureCriteria.FMC.muesp>
+            <de.elamx.laminate.addFailureCriteria.ZTL.f12star>-0.5</de.elamx.laminate.addFailureCriteria.ZTL.f12star>
+        </material>
+    </materials>
+    <fibres/>
+    <matrices/>
+    <optimizations/>
+</elamx>
