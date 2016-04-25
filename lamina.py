@@ -35,15 +35,14 @@ class Lamina:
 
     def __init__(self, name='Name of lamina', uuid=''):
         """Initialization function creates a xml tree element to keep lamina properties. It follows a structure similar
-        to the one seen in ElamX"""
+        to the one seen in ElamX. In the future it could be a more independent structure"""
         self.xml = ET.Element('lamina')
         self.xml.set('name', name)
         self.xml.set('uuid', uuid)
         properties = ['E11', 'E22', 'G12', 'poisson12', 'poisson21', 't', 'rho', 'sigma1_t', 'sigma1_c',
-                      'sigma2_t', 'sigma2_c', 'tau12', 'name', 'uuid']
+                      'sigma2_t', 'sigma2_c', 'tau12']
         for prop in properties:
             self.xml.append(ET.Element(prop))
-        self.Qvalid = False
         self.Q = np.zeros((3, 3))
 
     def set_micro_prop(self, mfraction=0.5, matrix='epoxy', fiber='hs carbon', arealweight=300, arch='uni', angles=[0]):
@@ -52,6 +51,7 @@ class Lamina:
         or selecting appropriated ones from selected materials.
         Arch is the architecture of the lamina. It can be 'uni' for either unidirectional or multiaxial laminas.
         Multiaxial laminas have more than one angle in angles. For cloth use either 'plain', 'twill' or 'satin'"""
+        # TODO there is a regresion on the way multiaxial reinforcements are treated. It shoul be refactored
         self.fiber = fiber.lower()
         self.matrix = matrix.lower()
         self.mfraction = mfraction
@@ -95,6 +95,7 @@ class Lamina:
         properties = self.calc_local_properties()
         for prop in properties:
             self.xml.find(prop).text = str(properties[prop])
+        self.xml.find('poisson21').text = str(self.calc_poisson21())
         return
 
     def calc_local_properties(self):
@@ -106,14 +107,20 @@ class Lamina:
         E22 = self.E_m / (1 - self.poisson_m**2) * (1 + 0.85 * self.vfraction**2) / (
             (1 - self.vfraction)**1.25 + self.vfraction * self.E_m / (self.Ey_f * (1 - self.poisson_m**2)))
         poisson12 = self.vfraction * self.poisson_f + (1 - self.vfraction) * self.poisson_m
-        poisson21 = poisson12 * E22 / E11
         self.G_m = self.E_m / (2 * (1 + self.poisson_m))
         G12 = self.G_m * ((1 + 0.8 * self.vfraction**0.8) / ((1 - self.vfraction)**1.25 + self.G_m /
                                                                   self.Gxy_f * self.vfraction))
         # units for thickness are mm. Input units for areal weight are g/m3
-        #TODO cambiar estimacion de espesor a la clase layer
+        #TODO cambiar estimacion de espesor a la clase ply
         self.t = self.arealweight * (1/self.rho_f + (1-self.mfraction)/(self.mfraction * self.rho_m))
-        return {'E11': E11, 'E22': E22, 'G12': G12, 'poisson12': poisson12, 'poisson21': poisson21}
+        return {'E11': E11, 'E22': E22, 'G12': G12, 'poisson12': poisson12}
+
+    def calc_poisson21(self):
+        """Utility function to help with the calculations from outside the class"""
+        E11 = float(self.xml.find('E11').text)
+        E22 = float(self.xml.find('E22').text)
+        poisson12 = float(self.xml.find('poisson12').text)
+        return poisson12 * E22 / E11
 
     def calc_micro_Q_matrix(self):
         """Calculate matrix Q only in the case where we want an estimation of properties for cloth reinforcement
@@ -121,6 +128,7 @@ class Lamina:
         if self.Qvalid:
             return self.Q
         properties = self.calc_local_properties()
+        properties['poisson21'] = self.calc_poisson21()
         Q = np.zeros((3, 3))
         Q[0, 0] = properties['E11'] / (1 - properties['poisson12'] * properties['poisson21'])
         Q[0, 1] = Q[1, 0] = (properties['poisson21'] * properties['E11'] /
@@ -139,15 +147,11 @@ class Lamina:
             print('For textile reinforcement check that two and only two angles are specified')
             raise
         Q[2, 2] = a * properties['G12']
-        self.Q = Q  # Update Q and keep it to avoid recalculation in a multiply laminate
-        self.Qvalid = True
         return Q
 
     def calc_Q(self):
         """Since we need calc_micro_Q_matrix to be in this class and Q calculation requires access to lamina
         properties we also put here this function"""
-        if self.Qvalid:
-            return self.Q
         Q = np.zeros((3, 3))
         properties = {}
         for property in self.xml:
@@ -202,6 +206,6 @@ class Lamina:
 
 if __name__ == '__main__':
     l = Lamina()
-    l.set_micro_prop()
-    #l.calc_micro_Q_matrix()
+    l.set_micro_prop(arch='satin', angles=[0,90])
+    print(l.calc_micro_Q_matrix())
     l.calc_Q()

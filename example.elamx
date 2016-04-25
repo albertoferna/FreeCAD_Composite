@@ -1,26 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <elamx version="1">
     <laminates>
-        <laminate name="New Laminate" symmetric="true" uuid="f05abfe7-7995-4be0-b213-d0478afff4c3" with_middle_layer="true">
-            <layer name="New Layer" uuid="1e548442-350d-4017-b706-295c3278154f">
-                <thickness>0.125</thickness>
-                <angle>0.0</angle>
-                <material>4a47d96c-682f-43d8-ba2a-c0f1b4f8a603</material>
-                <criterion>de.elamx.laminate.failure.Puck</criterion>
-            </layer>
-            <layer name="New Layer" uuid="5d61dd84-e103-44b2-af6e-67d232a07ba9">
-                <thickness>0.125</thickness>
-                <angle>0.0</angle>
-                <material>4a47d96c-682f-43d8-ba2a-c0f1b4f8a603</material>
-                <criterion>de.elamx.laminate.failure.Puck</criterion>
-            </layer>
-            <layer name="New Layer" uuid="71667468-7a72-4cd9-bf07-fa5d3d68a64e">
-                <thickness>5.0</thickness>
-                <angle>0.0</angle>
-                <material>4a47d96c-682f-43d8-ba2a-c0f1b4f8a603</material>
-                <criterion>de.elamx.laminate.failure.Puck</criterion>
-            </layer>
-        </laminate>
         <laminate name="Laminate2" symmetric="false" uuid="eed99eb5-fb7a-4a9d-b29e-2002a38f16ad" with_middle_layer="false">
             <layer name="lam2 layer" uuid="926e2765-9697-44c7-b472-6c0bef402738">
                 <thickness>0.125</thickness>
@@ -38,6 +18,40 @@
                 <thickness>0.125</thickness>
                 <angle>0.0</angle>
                 <material>4a47d96c-682f-43d8-ba2a-c0f1b4f8a603</material>
+                <criterion>de.elamx.laminate.failure.Puck</criterion>
+            </layer>
+        </laminate>
+        <laminate name="New Laminate" symmetric="false" uuid="f05abfe7-7995-4be0-b213-d0478afff4c3" with_middle_layer="true">
+            <layer name="New Layer" uuid="1e548442-350d-4017-b706-295c3278154f">
+                <thickness>0.125</thickness>
+                <angle>0.0</angle>
+                <material>4a47d96c-682f-43d8-ba2a-c0f1b4f8a603</material>
+                <criterion>de.elamx.laminate.failure.Puck</criterion>
+            </layer>
+            <layer name="New Layer" uuid="5d61dd84-e103-44b2-af6e-67d232a07ba9">
+                <thickness>0.125</thickness>
+                <angle>45.0</angle>
+                <material>4a47d96c-682f-43d8-ba2a-c0f1b4f8a603</material>
+                <criterion>de.elamx.laminate.failure.Puck</criterion>
+            </layer>
+            <layer name="New Layer" uuid="71667468-7a72-4cd9-bf07-fa5d3d68a64e">
+                <thickness>5.0</thickness>
+                <angle>0.0</angle>
+                <material>4a47d96c-682f-43d8-ba2a-c0f1b4f8a603</material>
+                <criterion>de.elamx.laminate.failure.Puck</criterion>
+            </layer>
+        </laminate>
+        <laminate name="Barbero" symmetric="false" uuid="bcfc543e-1458-4c06-b8bb-b05b1b246445" with_middle_layer="false">
+            <layer name="Capas" uuid="56c70e6b-3100-40c7-9e91-a749e58724de">
+                <thickness>0.635</thickness>
+                <angle>55.0</angle>
+                <material>9abe47df-5b43-45ba-9a6c-a70051785d76</material>
+                <criterion>de.elamx.laminate.failure.Puck</criterion>
+            </layer>
+            <layer name="Capas" uuid="0339c374-303a-4346-8c2b-2e9c03ea6840">
+                <thickness>0.635</thickness>
+                <angle>-55.0</angle>
+                <material>9abe47df-5b43-45ba-9a6c-a70051785d76</material>
                 <criterion>de.elamx.laminate.failure.Puck</criterion>
             </layer>
         </laminate>
@@ -69,6 +83,33 @@
             <de.elamx.laminate.failure.Puck.pspd>0.3</de.elamx.laminate.failure.Puck.pspd>
             <de.elamx.laminate.addFailureCriteria.FMC.muesp>0.15</de.elamx.laminate.addFailureCriteria.FMC.muesp>
             <de.elamx.laminate.addFailureCriteria.ZTL.f12star>-0.5</de.elamx.laminate.addFailureCriteria.ZTL.f12star>
+        </material>
+        <material class="de.elamx.laminate.DefaultMaterial" name="Barbero (115)" uuid="9abe47df-5b43-45ba-9a6c-a70051785d76">
+            <Epar>20.0</Epar>
+            <Enor>11.389</Enor>
+            <nue12>0.274</nue12>
+            <G>3.789</G>
+            <rho>1.7E-9</rho>
+            <alphaTPar>1.0E-6</alphaTPar>
+            <alphaTNor>3.5E-5</alphaTNor>
+            <betaPar>0.01</betaPar>
+            <betaNor>0.38</betaNor>
+            <RParTen>1500.0</RParTen>
+            <RParCom>1000.0</RParCom>
+            <RNorTen>180.0</RNorTen>
+            <RNorCom>240.0</RNorCom>
+            <RShear>150.0</RShear>
+            <de.elamx.laminate.addFailureCriteria.ZTL.f12star>-0.5</de.elamx.laminate.addFailureCriteria.ZTL.f12star>
+            <de.elamx.laminate.failure.Puck.a0>0.5</de.elamx.laminate.failure.Puck.a0>
+            <de.elamx.laminate.failure.Puck.pspz>0.35</de.elamx.laminate.failure.Puck.pspz>
+            <de.elamx.laminate.failure.Puck.lambda_min>0.5</de.elamx.laminate.failure.Puck.lambda_min>
+            <de.elamx.laminate.addFailureCriteria.Rotem.rmt>50.0</de.elamx.laminate.addFailureCriteria.Rotem.rmt>
+            <de.elamx.laminate.failure.Puck.pspd>0.3</de.elamx.laminate.failure.Puck.pspd>
+            <de.elamx.laminate.addFailureCriteria.FMC.muesp>0.15</de.elamx.laminate.addFailureCriteria.FMC.muesp>
+            <de.elamx.laminate.addFailureCriteria.Rotem.rmc>50.0</de.elamx.laminate.addFailureCriteria.Rotem.rmc>
+            <de.elamx.laminate.addFailureCriteria.Rotem.em>4500.0</de.elamx.laminate.addFailureCriteria.Rotem.em>
+            <de.elamx.laminate.addFailureCriteria.FMC.m>3.1</de.elamx.laminate.addFailureCriteria.FMC.m>
+            <de.elamx.laminate.addFailureCriteria.TsaiWu.f12star>-0.5</de.elamx.laminate.addFailureCriteria.TsaiWu.f12star>
         </material>
     </materials>
     <fibres/>
