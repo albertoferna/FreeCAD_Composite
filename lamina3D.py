@@ -35,6 +35,10 @@ class Lamina3D(Lamina):
         Lamina.__init__(self, name="nombre de prueba")
         self.xml.append(ET.Element("poisson23"))
 
+    def calc_C(self):
+        """Calculates stiffness matrix for a transversely isotropic lamina. It takes all the properties from
+        a general lamina description. The remaining value poisson23 is assumed to be 1.65 time poisson12"""
+        pass
 if __name__ == '__main__':
     l = Lamina3D()
     l.set_micro_prop()
