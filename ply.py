@@ -28,7 +28,8 @@ import numpy as np
 
 class Ply:
     """This class hold a lamina of certain thickness oriented in a certain direction. It takes its data from
-    a lamina and calculates the needed matrices."""
+    a lamina and calculates the needed matrices. Information is kept in a xml structure similar to the one used
+    in elamX"""
 
     def __init__(self, lamina, name='Layer', uuid='', t=0.1, angle=0.0):
         self.xml = ET.Element('ply')
