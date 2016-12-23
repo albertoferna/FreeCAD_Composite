@@ -25,6 +25,7 @@ __author__ = "Alberto Fernandez"
 
 from lamina import Lamina
 import xml.etree.ElementTree as ET
+import numpy as np
 
 class Lamina3D(Lamina):
     """This class serves a function very similar to lamina except it is used to calculate the full compliance and
@@ -34,11 +35,12 @@ class Lamina3D(Lamina):
     def __init__(self):
         Lamina.__init__(self, name="nombre de prueba")
         self.xml.append(ET.Element("poisson23"))
-
+        self.xml.append(ET.Element("G23"))
+        self.C = np.zeros(6,6)
     def calc_C(self):
         """Calculates stiffness matrix for a transversely isotropic lamina. It takes all the properties from
         a general lamina description. The remaining value poisson23 is assumed to be 1.65 time poisson12"""
-        pass
+        self.G23 = self.E22 / (2 * (1 + self.poisson23))
 if __name__ == '__main__':
     l = Lamina3D()
     l.set_micro_prop()
